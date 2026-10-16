@@ -12,7 +12,7 @@ st.set_page_config(
 # App Header
 st.title("🧹 CSV/Excel Data Cleaning Assistant")
 st.markdown(
-    "Upload your dataset, inspect data quality, clean missing values and duplicates, visualize trends, and export your polished file[cite: 1, 2]!"
+    "Upload your dataset, inspect data quality, clean missing values and duplicates, visualize trends, and export your polished file!"
 )
 
 # Sidebar for File Upload
@@ -31,7 +31,7 @@ if uploaded_file is not None:
     st.error(f"Error loading file: {e}")
     st.stop()
 
-  st.sidebar.success(f"Successfully loaded: **{uploaded_file.name}**[cite: 1]")
+  st.sidebar.success(f"Successfully loaded: **{uploaded_file.name}**")
 
   # --- Dataset Overview Metrics ---
   st.header("📊 Dataset Overview")
@@ -117,9 +117,9 @@ if uploaded_file is not None:
     if duplicate_count > 0:
       if st.button("Remove All Duplicate Rows"):
         df = df.drop_duplicates().reset_index(drop=True)
-        st.success(f"Removed {duplicate_count} duplicate rows[cite: 1]!")
+        st.success(f"Removed {duplicate_count} duplicate rows!")
     else:
-      st.info("No duplicates found[cite: 1].")
+      st.info("No duplicates found.")
 
     cleaning_strategy = st.selectbox(
         "Missing Value Strategy",
@@ -220,7 +220,7 @@ if uploaded_file is not None:
   if export_format == "CSV (.csv)":
     csv_data = df.to_csv(index=False).encode("utf-8")
     st.download_button(
-        "📥 Download Cleaned CSV[cite: 1]",
+        "📥 Download Cleaned CSV",
         csv_data,
         file_name="cleaned_data.csv",
         mime="text/csv",
@@ -231,10 +231,10 @@ if uploaded_file is not None:
       df.to_excel(writer, index=False, sheet_name="Cleaned_Data")
     excel_data = output.getvalue()
     st.download_button(
-        "📥 Download Cleaned Excel File[cite: 1]",
+        "📥 Download Cleaned Excel File",
         excel_data,
         file_name="cleaned_data.xlsx",
         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     )
 else:
-  st.info("👈 Please upload your dataset using the left sidebar to start[cite: 1]!")
+  st.info("👈 Please upload your dataset using the left sidebar to start!")

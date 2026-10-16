@@ -1,4 +1,8 @@
 ﻿__pycache__/
 .ipynb_checkpoints/
 .DS_Store
+<<<<<<< HEAD
 venv/
+=======
+venv/
+>>>>>>> a52b9c55ab590683d1f35331d70cea78b85eebbc
